@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/dntTestMe/i-stream/issues"
   },
-  "homepage": "https://github.com/dntTestMe/i-stream#readme"
+  "homepage": "https://github.com/dntTestMe/i-stream#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }

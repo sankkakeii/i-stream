@@ -16,7 +16,6 @@ import {
 import { Container } from './globalStyles';
 
 const SignUp = () => {
-  console.log('sign up')
 	const [data, setData] = useState({
 		email: "",
 		password: "",
