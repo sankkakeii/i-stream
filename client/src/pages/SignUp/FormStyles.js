@@ -5,7 +5,7 @@ export const FormSection = styled.div`
 	/* color: #fff; */
 	padding: 160px 0;
 	/* background: ${({ inverse }) => (inverse ? '#101522' : '#fff')}; */
-	background: #101522;
+	background: #FFA640;
 	height: 100vh;
 `;
 
@@ -86,7 +86,7 @@ export const FormInput = styled.input`
 	height: 40px;
 	width: 100%;
 	border: none;
-	border-bottom: 1px solid #cfcfcf;
+	border-bottom: 1px solid #000;
 	font-size: 1rem;
 `;
 
@@ -115,7 +115,7 @@ export const FormButton = styled.button`
 	background: none;
 	margin-top: 1.5rem;
 	white-space: nowrap;
-	/* color: #fff; */
+	/* color: #FFA640; */
 	outline: none;
 	width: 100%;
 	font-size: 1.4rem;

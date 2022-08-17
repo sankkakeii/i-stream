@@ -19,12 +19,17 @@ const SignUp = () => {
 	const [data, setData] = useState({
 		email: "",
 		password: "",
+    businessName: "",
+    address: "",
+    phone: ""
+
 	});
 	const [setError] = useState("");
 	const navigate = useNavigate();
 
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
+    console.log(data)
 	}; 
 
 	const handleSubmit = async (e) => {
@@ -59,6 +64,30 @@ const SignUp = () => {
                 name="email"
                 onChange={handleChange}
                 value={data.email}
+                required
+              />
+              <FormInput
+                type="text"
+                placeholder="Business Name"
+                name="businessName"
+                onChange={handleChange}
+                value={data.businessName}
+                required
+              />
+              <FormInput
+                type="phone"
+                placeholder="Phone Number"
+                name="phone"
+                onChange={handleChange}
+                value={data.phone}
+                required
+              />
+              <FormInput
+                type="address"
+                placeholder="Business Address"
+                name="address"
+                onChange={handleChange}
+                value={data.address}
                 required
               />
               <FormInput
