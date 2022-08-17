@@ -1,6 +1,4 @@
 const { Client } = require("../models/client.scheme");
-const { Location } = require("../models/location.scheme");
-const { User } = require("../models/user.scheme");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const mongoose = require('mongoose');
@@ -11,9 +9,16 @@ const newClient = {
 
   // client sign up
   signUp: async (req, res) =>{
-    const { email, password } = req.body;
+    const { email, password, businessName, businessAddress, phone } = req.body;
+    console.log(req.body)
       const hashedPassword = bcrypt.hashSync(password, 10);
-      const client = await new Client({ password: hashedPassword, email });
+      const client = await new Client({
+        password: hashedPassword,
+        email,
+        businessName: businessName,
+        businessAddress: businessAddress,
+        phone: phone,
+      });
       client.save().then((clientInfo) => {
         jwt.sign(
           { id: clientInfo._id, email: clientInfo.email },
@@ -23,7 +28,7 @@ const newClient = {
               console.log(err);
               res.sendStatus(500);
             } else {
-              console.log( clientInfo._id, clientInfo.email, token)
+              console.log( clientInfo)
                 // .cookie("token", token)
                 res.json({ id: clientInfo._id, email: clientInfo.email, myToken: token });
             }
@@ -85,24 +90,6 @@ const newClient = {
       res.send(err.message)
     }
     
-  },
-
-  addLocation: async (req, res) => {
-    try {
-    // create and add location  to the database
-    const payload = jwt.verify(req.body.token, process.env.JWTPRIVATEKEY);
-    const location = await new Location({
-      companyName: req.body.companyName,
-      clockInTime: req.body.clockInTime,
-      organizationLocation: req.body.organizationLocation,
-      companyId: new mongoose.Types.ObjectId(payload.id)
-    });
-    location.save().then((location) => {
-      res.json(location);
-    });
-    } catch (err) {
-      res.send(err.message)
-    }
   },
 
   viewUsers: async (req, res) =>{

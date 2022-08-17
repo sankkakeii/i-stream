@@ -20,7 +20,7 @@ const SignUp = () => {
 		email: "",
 		password: "",
     businessName: "",
-    address: "",
+    businessAddress: "",
     phone: ""
 
 	});
@@ -29,14 +29,17 @@ const SignUp = () => {
 
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
-    console.log(data)
+    
 	}; 
 
 	const handleSubmit = async (e) => {
+    console.log('DATA', data)
 		e.preventDefault();
 		try {
-			const url = `${process.env.REACT_APP_TIMEKEEPR_API}/client/sign-up`;
+			const url = `${process.env.REACT_APP_I_STREAM_API}/client/sign-up`;
 			const { data: res } = await axios.post(url, data)
+      console.log(data)
+      // await axios.post(url, data)
 
 			// navigate("/login");
 			console.log('signUpSuccess');
@@ -46,7 +49,7 @@ const SignUp = () => {
 				error.response.status >= 400 &&
 				error.response.status <= 500
 			) {	
-				setError(error.response.data.message);
+				console.log(error.response.data.message);
 			}
 		}
 	};
@@ -85,9 +88,9 @@ const SignUp = () => {
               <FormInput
                 type="address"
                 placeholder="Business Address"
-                name="address"
+                name="businessAddress"
                 onChange={handleChange}
-                value={data.address}
+                value={data.businessAddress}
                 required
               />
               <FormInput
