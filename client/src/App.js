@@ -4,6 +4,7 @@ import Login from "./pages/Login/index";
 import SignUp from "./pages/SignUp/index";
 // import Home from "./pages/Home/index";
 import "../src/index.css";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         {/* <Route exact path={"/"} element={<Home />} /> */}
         <Route exact path={"/login"} element={<Login />} />
         <Route exact path={"/sign-up"} element={<SignUp />} />
+        <Route exact path={"/dashboard"} element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
     </div>

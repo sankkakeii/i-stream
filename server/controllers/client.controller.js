@@ -66,54 +66,7 @@ const newClient = {
     res.json('dashboard')
 
   }, 
-
-  addUser: async (req, res) =>{
-    try {
-    // create and add user to the database
-    const payload = jwt.verify(req.body.token, process.env.JWTPRIVATEKEY);
-
-    const hashedPassword = bcrypt.hashSync('1234', 10);
-    const user = await new User({
-      email: req.body.email,
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      role: req.body.role,
-      phone: req.body.phone,
-      password: hashedPassword,
-      companyId: new mongoose.Types.ObjectId(payload.id)
-    });
-    user.save().then((user) => {
-      
-      res.sendStatus(201)
-    });
-    } catch (err) {
-      res.send(err.message)
-    }
-    
-  },
-
-  viewUsers: async (req, res) =>{
-    res.send('no current users')
-
-  },
-
-  viewAnalytics: async (req, res) =>{
-
-  },
-
-  payments: async (req, res) =>{
-
-  },
-
-  notifications: async (req, res) =>{
-
-},
-
-  settings: async (req, res) =>{
-
-  },
 };
 
-// module.exports = router;
 module.exports = newClient;
 

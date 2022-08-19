@@ -35,11 +35,12 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = `${process.env.REACT_APP_TIMEKEEPR_API}/client/login`;
+			const url = `${process.env.REACT_APP_I_STREAM_API}/client/login`;
 			const { data: res } = await axios.post(url, data)
-			console.log('TOKEN ', res.headers['x-access_token'])
+
 			localStorage.setItem("token", res.token)
-			// navigate("/dashboard");
+			// console.log('TOKEN ', res.headers['x-access_token'])
+			navigate("/dashboard");
 
 		} catch (error) {
 			if (

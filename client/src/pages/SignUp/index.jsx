@@ -33,12 +33,10 @@ const SignUp = () => {
 	}; 
 
 	const handleSubmit = async (e) => {
-    console.log('DATA', data)
 		e.preventDefault();
 		try {
 			const url = `${process.env.REACT_APP_I_STREAM_API}/client/sign-up`;
 			const { data: res } = await axios.post(url, data)
-      console.log(data)
       // await axios.post(url, data)
 
 			// navigate("/login");

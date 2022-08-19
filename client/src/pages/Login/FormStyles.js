@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 export const FormSection = styled.div`
 	/* color: #fff; */
 	padding: 160px 0;
-	/* background: ${({ inverse }) => (inverse ? '#101522' : '#fff')}; */
-	background: #101522;
+	/* background: ${({ inverse }) => (inverse ? '#FFA640' : '#fff')}; */
+	background: #FFA640;
 	height: 100vh;
 `;
 
