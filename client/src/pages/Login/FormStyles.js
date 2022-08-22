@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 export const FormSection = styled.div`
 	/* color: #fff; */
 	padding: 160px 0;
-	/* background: ${({ inverse }) => (inverse ? '#FFA640' : '#fff')}; */
-	background: #FFA640;
+	/* background: ${({ inverse }) => (inverse ? '#E34A51' : '#fff')}; */
+	background: #E34A51;
 	height: 100vh;
 `;
 
@@ -75,7 +75,7 @@ export const FormInputRow = styled.div`
 	> p {
 		font-size: 0.8rem;
 		margin-top: 0.5rem;
-		color: #f00e0e;
+		color: #E34A51;
 	}
 `;
 export const FormInput = styled.input`
@@ -115,7 +115,7 @@ export const FormButton = styled.button`
 	background: none;
 	margin-top: 1.5rem;
 	white-space: nowrap;
-	/* color: #fff; */
+	// color: #F9656C; 
 	outline: none;
 	width: 100%;
 	font-size: 1.4rem;
@@ -128,6 +128,6 @@ export const FormButton = styled.button`
 	&:hover {
 		color: white;
 		transition: background-color 0.4s ease-in;
-		background-color: black;
+		background-color: #E34A51;
 	}
 `;

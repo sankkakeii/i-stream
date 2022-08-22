@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import Select from "react-dropdown-select";
 import styles from "./styles.module.css";
 
 import {
@@ -15,13 +16,13 @@ import {
 } from './FormStyles';
 import { Container } from './globalStyles';
 
-const SignUp = () => {
+const AddVideoForm = () => {
 	const [data, setData] = useState({
 		email: "",
 		password: "",
     businessName: "",
-    businessAddress: "",
-    phone: ""
+    businessAddress: "", 
+    phone: "" 
 
 	});
 	const [setError] = useState("");
@@ -39,8 +40,6 @@ const SignUp = () => {
 			const { data: res } = await axios.post(url, data)
       // console.log(res)
 
-			console.log('signUpSuccess');
-      navigate("/login");
 		} catch (error) {
 			if (
 				error.response &&
@@ -52,62 +51,59 @@ const SignUp = () => {
 		}
 	};
 
-	return (
+	return ( 
     <FormSection>
       <Container>
         <FormRow>
           <FormColumn small>
-            <FormTitle>Create Account</FormTitle>
+            <FormTitle>Add Content</FormTitle>
             <FormWrapper onSubmit={handleSubmit}>
               <FormInput
-                type="email"
-                placeholder="Email"
-                name="email"
+                type="text"
+                placeholder="Content Title"
+                name="content-title"
                 onChange={handleChange}
-                value={data.email}
+                value={data.title}
                 required
               />
+             
               <FormInput
-                type="text"
-                placeholder="Business Name"
-                name="businessName"
+                type="dropDown"
+                placeholder="genre"
+                name="genre"
                 onChange={handleChange}
                 value={data.businessName}
                 required
               />
               <FormInput
-                type="phone"
-                placeholder="Phone Number"
-                name="phone"
+                type="dropDown"
+                placeholder="Content Type"
+                name="contentType"
                 onChange={handleChange}
-                value={data.phone}
+                value={data.contentType}
                 required
               />
               <FormInput
                 type="address"
-                placeholder="Business Address"
+                placeholder="Release Date"
                 name="businessAddress"
                 onChange={handleChange}
                 value={data.businessAddress}
                 required
               />
               <FormInput
-                type="password"
-                placeholder="Password"
+                type="dropDown"
+                placeholder="Language"
                 name="password"
                 onChange={handleChange}
                 value={data.password}
                 required
               />
-              <FormButton type="submit">Sign Up</FormButton>
             </FormWrapper>
             <div className={styles.left}>
-              <p>Already Have an Account?</p>
-              <Link to="/login">
-                <FormButton>
-                  Sign In
+                <FormButton type="submit">
+                  Next
                 </FormButton>
-              </Link>
             </div>
           </FormColumn>
         </FormRow>
@@ -117,4 +113,4 @@ const SignUp = () => {
 
 };
 
-export default SignUp;
+export default AddVideoForm;

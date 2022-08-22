@@ -66,7 +66,12 @@ const newClient = {
     res.json('dashboard')
 
   }, 
-};
+
+  uploadVideo: async (req, res) =>{  
+    console.log('uploadVideo')
+  }
+  
+}
 
 module.exports = newClient;
 

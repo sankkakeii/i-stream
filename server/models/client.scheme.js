@@ -13,17 +13,16 @@ const clientSchema = new mongoose.Schema({
     },
     businessName: {
         type: String,
-        unique: true,
+        // unique: true,
         trim:true
     },
     businessAddress: {
         type: String,
-        unique: true,
         trim:true
     },
     phone: {
         type: String,
-        unique: true,
+        // unique: true,
         trim:true
     },
     password:{

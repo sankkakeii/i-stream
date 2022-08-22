@@ -39,8 +39,13 @@ const Login = () => {
 			const { data: res } = await axios.post(url, data)
 
 			localStorage.setItem("token", res.token)
-			// console.log('TOKEN ', res.headers['x-access_token'])
-			navigate("/dashboard");
+			// console.log('TOKEN ', res.headers['x-access_token'])			
+			if(res.auth === true){
+				navigate("/dashboard");
+			}
+			else{
+				console.log('unauthorized')
+			}
 
 		} catch (error) {
 			if (
