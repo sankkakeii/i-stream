@@ -82,11 +82,11 @@ export const FormInput = styled.input`
 	display: block;
 	padding-left: 10px;
 	outline: none;
-	border-radius: 2px;
+	border-radius: 5px;
 	height: 40px;
 	width: 100%;
 	border: none;
-	border-bottom: 1px solid #cfcfcf;
+	border: 1px solid #000;
 	font-size: 1rem;
 `;
 

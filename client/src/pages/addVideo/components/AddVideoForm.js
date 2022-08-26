@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import Select from "react-dropdown-select";
+// import Select from "react-dropdown-select";
 import styles from "./styles.module.css";
 
 import {
@@ -13,7 +13,16 @@ import {
 	FormRow,
 	FormButton,
 	FormTitle,
-} from './FormStyles';
+
+  DropDownMain,
+  DropDownContainer,
+  DropDownHeader,
+  DropDownListContainer,
+  DropDownList,
+  ListItem,
+
+
+} from './AddContentFormStyles';
 import { Container } from './globalStyles';
 
 const AddVideoForm = () => {
@@ -51,7 +60,21 @@ const AddVideoForm = () => {
 		}
 	};
 
-	return ( 
+  // Genre Drop down options
+  const genreOptions = ["Action", "Thriller", "Romance", "Horror", "Documentary"];
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const toggling = () => setIsOpen(!isOpen);
+
+  const onOptionClicked = value => () => {
+    setSelectedOption(value);
+    setIsOpen(false);
+    console.log(selectedOption);
+  };
+
+	return (
     <FormSection>
       <Container>
         <FormRow>
@@ -66,23 +89,27 @@ const AddVideoForm = () => {
                 value={data.title}
                 required
               />
-             
-              <FormInput
-                type="dropDown"
-                placeholder="genre"
-                name="genre"
-                onChange={handleChange}
-                value={data.businessName}
-                required
-              />
-              <FormInput
-                type="dropDown"
-                placeholder="Content Type"
-                name="contentType"
-                onChange={handleChange}
-                value={data.contentType}
-                required
-              />
+              <DropDownContainer>
+                <DropDownHeader onClick={toggling}>
+                  {selectedOption || "Genre"}
+
+                </DropDownHeader>
+                {isOpen && (
+                  <DropDownListContainer>
+                    <DropDownList>
+                      {genreOptions.map((option) => (
+                        <ListItem
+                          onClick={onOptionClicked(option)}
+                          key={Math.random()}
+                        >
+                          {option}
+                        </ListItem>
+                      ))}
+                    </DropDownList>
+                  </DropDownListContainer>
+                )}
+              </DropDownContainer>
+
               <FormInput
                 type="address"
                 placeholder="Release Date"
@@ -91,19 +118,9 @@ const AddVideoForm = () => {
                 value={data.businessAddress}
                 required
               />
-              <FormInput
-                type="dropDown"
-                placeholder="Language"
-                name="password"
-                onChange={handleChange}
-                value={data.password}
-                required
-              />
             </FormWrapper>
             <div className={styles.left}>
-                <FormButton type="submit">
-                  Next
-                </FormButton>
+              <FormButton type="submit">Next</FormButton>
             </div>
           </FormColumn>
         </FormRow>
