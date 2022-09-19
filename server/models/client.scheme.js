@@ -30,6 +30,11 @@ const clientSchema = new mongoose.Schema({
         required: [true, "password is required"],
         trim:true,
     },
+    role: {
+        type: String,
+        default: 'creator'
+
+    }
 }, { timestamps:true})
 
 

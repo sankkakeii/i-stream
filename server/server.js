@@ -27,6 +27,7 @@ app.use(bodyParser.json());
 // Routes 
 app.use('/api', require('./routes/home.route.js'));
 app.use('/api/client', require('./routes/client.route.js'));
+app.use('/api/video', require('./routes/video.route.js'));
 
 
 // Start server
@@ -34,4 +35,4 @@ app.use('/api/client', require('./routes/client.route.js'));
 app.listen( process.env.PORT || 8080, async () => {
     await Mongo(`${DB_URL}`)
     console.log(`the server is running on Port ${PORT}`);
-});
+}); 

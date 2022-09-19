@@ -1,39 +1,38 @@
 const mongoose = require('mongoose');
-// const { Schema } = mongoose
 
-const jwt = require("jsonwebtoken");
-const Joi = require("joi");
-const passwordComplexity = require("joi-password-complexity");
-
-const contentSchema = new mongoose.Schema({
-    email: {
+const videoContentSchema = new mongoose.Schema({
+    creatorID: { 
+        type: mongoose.SchemaTypes.ObjectId 
+    },
+    contentTitle: {
         type: String,
-        required:[true, "email is required"],
+        required:[true],
         trim:true
     },
-    businessName: {
+    genre: {
         type: String,
-        // unique: true,
+        required: [true],
         trim:true
     },
-    businessAddress: {
+    type: {
         type: String,
+        trim:true,
+        required: [true],
+    },
+    releaseDate: {
+        type: String,
+        required: [true],
         trim:true
     },
-    phone: {
+    language:{
         type: String,
-        // unique: true,
-        trim:true
-    },
-    password:{
-        type: String,
-        required: [true, "password is required"],
+        required: [true, "laguage is required"],
         trim:true,
     },
 }, { timestamps:true})
 
 
-const content = mongoose.model("content", contentSchema);
+const videoContent = mongoose.model("videoContent", videoContentSchema);
 
 
-module.exports = { content };
+module.exports = { videoContent };

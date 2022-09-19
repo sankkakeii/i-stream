@@ -23,7 +23,7 @@ import {
   ListItem,
 
 
-} from './AddContentFormStyles';
+} from './VideoListStyles';
 import { Container } from './globalStyles';
 
 const AddVideoForm = () => {

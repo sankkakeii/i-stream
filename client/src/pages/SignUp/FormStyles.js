@@ -80,6 +80,7 @@ export const FormInputRow = styled.div`
 `;
 export const FormInput = styled.input`
 	display: block;
+	margin-bottom: 1.4rem;
 	padding-left: 10px;
 	outline: none;
 	border-radius: 5px;

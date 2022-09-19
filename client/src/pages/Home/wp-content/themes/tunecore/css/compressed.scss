@@ -1,0 +1,1064 @@
+/*
+	Theme Name: TuneCore
+	Theme URI: http://tunecore.com
+	Description: TuneCore Theme
+	Version: 1.0.0
+	Author: Everett Glovier
+	Author URI: http://sympatico.media
+	Tags:
+
+	License: MIT
+	License URI: http://opensource.org/licenses/mit-license.php
+*/
+
+@import '../SASS/bootstrap';
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
+
+@function rem( $size ){
+  $remSize: $size / 10px;
+  @return #{$remSize}rem;
+}
+/* This was hand-written by SMYPATICO, so don't go snooping around. */
+
+/* SASS Declarations */
+$dark: #000;
+$light: #fff;
+$primary: #00a1e0;
+$secondary: #00a1e0;
+$grey: #9B9B9B;
+$greyDark: #706F6F;
+$footer-background: #1c1d1d;
+$font-family: 'Roboto', sans-serif;
+$font-size-sm: rem(16px);
+$font-size-md: rem(22px);
+$font-size-lg: rem(22px);
+$margin: 1.2rem;
+
+$header-height: 60px;
+$hero-height-lg: 650px;
+$hero-height-md: 500px;
+$hero-height-sm: 500px;
+$hero-height: 300px;
+
+$screen-xs-min: 320px;
+$screen-sm-min: 768px;
+$screen-md-min: 992px;
+$screen-lg-min: 1200px;
+
+$h1: rem(50px);
+$h1-sm: rem(60px);
+$h1-md: rem(100px);
+$h1-lg: rem(100px);
+
+$h2: rem(35px);
+$h2-lg: rem(70px);
+$h2-md: rem(58px);
+$h2-sm: rem(45px);
+
+$p: rem(14px);
+$p-sm: rem(16px);
+$p-md: rem(22px);
+$p-lg: rem(22px);
+
+/* SASS functions */
+
+
+@function margin( $scale ){
+  @return $scale * $margin;
+}
+
+@function padding( $scale ){
+  @return margin( $scale );
+}
+
+/* Mixins */
+@mixin hover-light(){
+  background: lighten( $primary, 10% );
+}
+
+@mixin hover-trans(){
+  background: rgba( 255, 255, 255, .2 );
+}
+
+@mixin background-positions(){
+  &.top-left{ background-position: top left; }
+  &.top-center{ background-position: top center ; }
+  &.top-right{ background-position: top right ; }
+  &.center-left{ background-position: center left ; }
+  &.center-center{ background-position: center ; }
+  &.center-right{ background-position: center right ; }
+  &.bottom-left{ background-position: bottom left ; }
+  &.bottom-center{ background-position: bottom center ; }
+  &.bottom-right{ background-position: bottom right ; }
+}
+
+@mixin background-transition(){
+  transition: background 400ms ease;
+}
+
+/* Remove any padding and margins from BB */
+.fl-row-content-wrap, .fl-module-content{
+  padding: 0 !important; margin: 0 !important;
+}
+
+.tunecore-block.tunecore-career{
+  h1{
+    font-size: 3.5rem;
+  }
+}
+
+/* Reset */
+h1, h2, h3, h4, h5, h6, p, ul, ol, li{
+  margin: 0;
+  padding: 0;
+}
+
+a, a:focus, a:hover, a:active, a:link{
+  outline: 0 !important;
+}
+
+h1, h2, h3, h4, h5{
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+h1, h2{
+  font-weight: 100;
+}
+
+text-grey{
+  color: $grey !important;
+}
+
+text-dark-grey{
+  color: $greyDark !important;
+}
+
+text-black{
+  color: #000 !important;
+}
+
+text-white{
+  color: #fff !important;
+}
+
+h1{ font-size: $h1; }
+h2{ font-size: $h2; }
+
+p, ul, ol{
+  font-weight: 300;
+  font-size: $p;
+}
+
+blockquote{
+  border-color: $primary;
+  color: $primary;
+  p {
+    font-size: 3.2rem !important;
+    font-style: italic;
+    line-height: 1.2;
+    margin: 0 !important;
+  }
+}
+
+img.guide-header-image{
+  border-bottom: 5px solid $primary;
+}
+
+.post-edit-link{
+  background: #000;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 12px;
+  color: #fff;
+  font-size: 14px;
+  z-index: 99;
+}
+
+ul.post-tags{
+  padding: 0 !important;
+  margin: 0;
+  list-style-type: none;
+  li{
+    display: inline;
+    &:not(:last-child):after{
+      content: ' | ';
+    }
+  }
+
+}
+
+/* Helper classes */
+
+.text-upper{
+  text-transform: uppercase;
+}
+
+.mb1{margin-bottom: margin(1);}
+.mb2{margin-bottom: margin(2);}
+
+.tunecore-modal-content{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 100%;
+  iframe{
+    align-self: center;
+  }
+}
+
+.space-between{
+  display: flex;
+  justify-content: space-between;
+}
+
+.full-height{
+  height: 100vh;
+}
+
+.spacer{
+  opacity: 0;
+  width: 100%;
+  height: auto;
+}
+
+.star{
+  img{
+    width: 15px;
+    height: auto;
+  }
+}
+.center-vertical{
+  align-self: center;
+}
+
+.justify-center{
+  justify-content: center;
+}
+
+.row{
+  width: auto;
+  max-width: inherit;
+}
+
+img.chevron-down{
+  width: 4rem;
+  height: auto;
+}
+
+/* Responsive video containers */
+.media{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100%;
+  padding: 48px;
+  .responsive-container{
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  iframe{
+    width: 90vw;
+    align-self: center;
+    height: 50.625vw;
+  }
+}
+
+/* Global Variables */
+body{
+  font-family: $font-family;
+  background: $light;
+
+  //Sticky Footer
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  --tunecore-blue: #00a1e0;
+}
+
+a{
+  color: $primary;
+  &:hover{
+    color: darken( $primary, 10% );
+  }
+}
+
+main{
+  //Grow to fill content
+  //padding-top: $header-height;
+  flex: 1;
+}
+
+.shim{
+  height: $header-height;
+  width: 100%;
+  background: $dark;
+}
+
+/* Header */
+header.tc-header{
+  top: 0; left: 0;
+  padding: 0 15px;
+  width: 100%;
+  background: #000;
+  background: -moz-linear-gradient(top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0.85) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  height: $header-height;
+  position: fixed;
+  z-index: 98;
+  font-weight: 300;
+  .menu-container{
+    display: inline-block;
+  }
+  img{
+    height: $header-height / 3;
+    width: auto;
+    margin: $header-height / 3 0;
+  }
+  ul{
+    display: inline-block;
+    list-style-type: none;
+    color: #fff;
+    li{
+      display: inline-block;
+      margin-top: 11px;
+      font-size: 13px;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: inherit;
+      text-decoration: none;
+      &.active{
+        font-weight: 300;
+        color: $primary;
+      }
+      &.sign-up{
+        background: $primary;
+        //text-transform: uppercase;
+        @include background-transition();
+        &:hover{
+          @include hover-light();
+          color: $light;
+        }
+        a, a:link, a:visited{
+          color: #fff;
+        }
+      }
+      a, a:link, a:visited{
+        color: #fff;
+        text-decoration: none;
+        font-weight: 300;
+        padding: 10px 12px 10px;
+        display: inline-block;
+      }
+      &.current_page_item{
+        a, a:link, a:visited{
+          color: $primary;
+        }
+      }
+      a:hover{
+        color: $primary;
+      }
+    }
+  }
+}
+
+/* Tabs */
+/* Custom dropdown */
+.tunecore-dropdown {
+  position: relative;
+  display: block;
+  vertical-align: middle;
+  margin: 10px; /* demo only */
+}
+
+.tunecore-dropdown select {
+  background-color: $primary;
+  color: #fff;
+  font-size: inherit;
+  padding-right: 2.4rem;
+  display: block;
+  color: white;
+  font-size: rem( 14px );
+  font-weight: 300;
+  text-transform: uppercase;
+  padding: 12px 30px;
+  text-decoration: none;
+  @include background-transition();
+
+  border: 0;
+  width: 100%;
+  margin: 0;
+  border-radius: 0;
+  text-indent: 0.01px;
+  text-overflow: '';
+  -webkit-appearance: button; /* hide default arrow in chrome OSX */
+}
+
+.tunecore-dropdown::before,
+.tunecore-dropdown::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.tunecore-dropdown::after { /*  Custom dropdown arrow */
+  content: "\25BC";
+  height: 1em;
+  font-size: .625em;
+  line-height: 1;
+  right: 1.2em;
+  top: 50%;
+  margin-top: -.5em;
+}
+
+.tunecore-dropdown::before { /*  Custom dropdown arrow cover */
+  width: 2em;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 0 3px 3px 0;
+}
+
+.tunecore-dropdown select[disabled] {
+  color: rgba(0,0,0,.3);
+}
+
+.tunecore-dropdown select[disabled]::after {
+  color: rgba(0,0,0,.1);
+}
+
+.tunecore-dropdown::before {
+  background-color: rgba(0,0,0,.15);
+}
+
+.tunecore-dropdown::after {
+  color: rgba(0,0,0,.4);
+}
+
+/* Fullscreen Menu */
+.button_container {
+  position: fixed;
+  top: 18px;
+  right: 10px;
+  height: 27px;
+  width: 37px;
+  cursor: pointer;
+  z-index: 100;
+  transition: opacity .25s ease;
+
+  &:hover {
+    opacity: .7;
+  }
+
+  &.active {
+    .top {
+      transform: translateY(11px) translateX(0) rotate(45deg);
+      background: $light;
+    }
+    .middle {
+      opacity: 0;
+      background: $light;
+    }
+
+    .bottom {
+      transform: translateY(-11px) translateX(0) rotate(-45deg);
+      background: $light;
+    }
+  }
+
+  span {
+    background: $light;
+    border: none;
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition:  all .35s ease;
+    cursor: pointer;
+
+    &:nth-of-type(2) {
+      top: 11px;
+    }
+
+    &:nth-of-type(3) {
+      top: 22px;
+    }
+  }
+}
+
+header.tc-header ul li.language-switcher {
+  padding: 0;
+  width: 25px;
+  height: 40px;
+  background-image: url(../img/earth.svg);
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  &:hover{
+    cursor: pointer;
+  }
+  a {
+    visibility: hidden;
+  }
+}
+.tunecore-main-menu {
+  position: fixed;
+  right: 60px;
+  width: auto;
+}
+.overlay {
+  position: fixed;
+  background: rgba(0,0,0,.95);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 99;
+  visibility: hidden;
+  transition: opacity .35s, visibility .35s, height .35s;
+  overflow: hidden;
+  display: none;
+  &.open {
+    opacity: 1;
+    display: block;
+    visibility: visible;
+    height: 100%;
+
+    li {
+      animation: fadeInRight .5s ease forwards;
+      animation-delay: .35s;
+
+      &:nth-of-type(2) {
+        animation-delay: .4s;
+      }
+      &:nth-of-type(3) {
+        animation-delay: .45s;
+      }
+      &:nth-of-type(4) {
+        animation-delay: .50s;
+      }
+      &:nth-of-type(5) {
+        animation-delay: .55s;
+      }
+      &:nth-of-type(6) {
+        animation-delay: .60s;
+      }
+      &:nth-of-type(7) {
+        animation-delay: .65s;
+      }
+      &:nth-of-type(8) {
+        animation-delay: .70s;
+      }
+    }
+  }
+  nav {
+    position: relative;
+    font-size: rem( 28px );
+    font-weight: 300;
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    height: 100%;
+  }
+  ul {
+    align-self: center;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    display: inline-block;
+    position: relative;
+    li {
+      display: block;
+      position: relative;
+      opacity: 0;
+      margin: rem( 18px ) 0;
+      a {
+        display: block;
+        position: relative;
+        color: $light;
+        text-decoration: none;
+        overflow: hidden;
+        font-size: 2.2rem;
+        &:hover:after,
+        &:focus:after,
+        &:active:after {
+          width: 100%;
+        }
+        &:hover {
+          color: $primary;
+        }
+
+        /*&:after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          width: 0%;
+          transform: translateX(-50%);
+          height: 3px;
+          background: $dark;
+          transition: .35s;
+        }*/
+      }
+    }
+  }
+}
+
+#modal{
+  z-index: 101;
+  #modal-button{
+    z-index: 102;
+  }
+}
+
+.tunecore-basic-template{
+  margin: margin(2) auto;
+  h1{
+    font-size: 8rem;
+    margin-bottom: margin(2);
+    line-height: 1;
+  }
+
+  h2,h3,h4,h5{
+    text-transform: none;
+    font-weight: 300;
+    margin-bottom: margin(1);
+    color: $greyDark;
+  }
+
+  h2{
+    font-size: 3.2rem;
+  }
+  p, ul, ol, li{
+    font-size: 1.4rem;
+    margin-bottom: margin(1);
+  }
+  ul{
+    line-height: 1.55;
+    list-style-type: disc;
+    padding: 0 0 0 2rem;
+    border: 0;
+    margin-bottom: margin( 2 );
+  }
+  ol{
+    line-height: 1.55;
+    padding: 0 0 0 2rem;
+    border: 0;
+    margin-bottom: margin( 2 );
+  }
+}
+
+/* Objects, Buttons, Etc. */
+.tunecore-btn, .tunecore-btn:link, input[type=submit]{
+  border: none;
+  background: $primary;
+  display: block;
+  color: white;
+  font-size: rem( 14px );
+  font-weight: 300;
+  text-transform: uppercase;
+  padding: padding(1) padding(2);
+  text-decoration: none;
+  @include background-transition();
+  text-align: center;
+  &.tunecore-btn-sm{
+    font-size: rem( 15px ) !important;
+    padding: 1rem 3rem !important;
+    text-transform: none;
+  }
+  &.tunecore-btn-white{
+    background: transparent;
+    border: 1px solid white;
+  }
+  &.tunecore-btn-black{
+    background: transparent;
+    border: 1px solid black;
+    color: black;
+  }
+  &:hover{
+    @include hover-light();
+    text-decoration: none;
+    color: $light;
+  }
+  &.tunecore-btn-white:hover {
+    @include hover-trans();
+  }
+  &.tunecore-btn-black:hover {
+    @include hover-trans();
+    color: black;
+  }
+}
+
+input[type=submit]{
+  font-size: rem( 15px );
+  padding: 1rem 3rem;
+  text-transform: none;
+}
+
+.tunecore-btn.tunecore-btn-block, .tunecore-btn.tunecore-btn-block:link{
+  display: block;
+  text-align: center;
+}
+
+a.tunecore-store-icon{
+  img{
+    height: 2.5rem; width: auto;
+  }
+}
+
+/* Animations */
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    left: 20%;
+  }
+  100% {
+    opacity: 1;
+    left: 0;
+  }
+}
+
+/* Content */
+@import '../SASS/module-block';
+@import '../SASS/module-hero';
+@import '../SASS/module-header';
+@import '../SASS/module-video';
+@import '../SASS/module-video';
+@import '../SASS/module-list';
+@import '../SASS/module-icon-list';
+@import '../SASS/module-basic';
+@import '../SASS/module-editor';
+@import '../SASS/module-two-column';
+@import '../SASS/module-video-callout';
+@import '../SASS/module-video-header';
+@import '../SASS/module-callout';
+@import '../SASS/module-block-outline';
+@import '../SASS/module-block-video-thumbs';
+@import '../SASS/module-table';
+@import '../SASS/module-loop';
+@import '../SASS/module-flowchart';
+@import '../SASS/module-carousel';
+@import '../SASS/module-artist-services';
+@import '../SASS/module-office';
+@import '../SASS/module-team';
+@import '../SASS/module-widget';
+@import '../SASS/module-terms';
+@import '../SASS/language-switcher';
+@import '../SASS/slick';
+@import '../SASS/footer';
+@import '../SASS/icons';
+@import '../SASS/blog';
+@import '../SASS/cookie-consent';
+@import '../SASS/languages';
+@import '../SASS/banner';
+
+.row-tunecore-icon{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-tunecore-icon{
+  color: $primary !important;
+  text-align: left !important;
+  font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 1;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  margin-bottom: margin(1);
+  .tunecore-icon{
+    //font-size: 4rem;
+    display: inline;
+    margin: 0;
+    margin-right: margin(1);
+    text-transform: none;
+  }
+}
+
+.expandable{
+  display: none;
+}
+
+.responsive-slider img{
+  padding: padding(.5);
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+  transition: filter 300ms linear;
+  &:hover{
+    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(0%);
+  }
+}
+
+.visible-xl {
+  display: none !important;
+}
+@media (min-width: 1200px){
+  .tunecore-main-menu {
+    right: 0 !important;
+  }
+  .visible-xl {
+    display:block !important;
+  }
+  .hidden-xl {
+    display: none !important;
+  }
+}
+
+  /* Necessary to remove background images on small screens */
+  @media (max-width: $screen-sm-min) {
+
+  }
+
+  /* Small devices (tablets, 768px and up) */
+  @media (min-width: $screen-sm-min) {
+    .tunecore-block.tunecore-career{
+      h1{
+        font-size: 5rem;
+      }
+    }
+    .star{
+      img{
+        width: 30px;
+        height: auto;
+      }
+    }
+    .expandable{
+      display: block;
+    }
+    body{
+      font-size: $font-size-sm;
+    }
+    p, ul, ol{ font-size: $p-sm }
+    h1{ font-size: $h1-sm }
+    h2{ font-size: $h2-sm }
+
+    .row-tunecore-icon{
+      margin: 0;
+      padding: padding(2) 0;
+      display: block;
+      .tunecore-icon{
+        margin-right: 0;
+        display: block;
+        font-size: 5rem;
+        margin-bottom: margin(1);
+      }
+    }
+
+    .col-tunecore-icon{
+      text-align: center !important;
+      font-size: 1.8rem;
+      padding: 0 padding(2);
+      display: block;
+    }
+
+    .tunecore-btn, .tunecore-btn:link, .tunecore-dropdown, input[type=submit] {
+      display: inline-block;
+    }
+
+    .btn-group{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      .tunecore-btn{
+        flex: 1;
+        &:not(:last-child){
+          margin-right: margin(1);
+        }
+      }
+    }
+
+    .flex-row-sm.row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .flex-row-sm.row > [class*='col-'] {
+      display: flex;
+      flex-direction: column;
+    }
+    .flex-row-sm.row:after,
+    .flex-row-sm.row:before {
+      display: flex;
+    }
+  }
+
+  /* Medium devices (desktops, 992px and up) */
+  @media (min-width: $screen-md-min) {
+    .tunecore-block.tunecore-career{
+      h1{
+        font-size: 7rem;
+      }
+    }
+
+    .tunecore-block{
+      &.left, &.right{ @include background-positions(); }
+    }
+
+    .tunecore-btn, .tunecore-btn:link, input[type=submit], .tunecore-dropdown select {
+      padding: padding( 1 );
+      font-size: 1.8rem;
+      padding: 1.6rem 5rem;
+    }
+
+    body{
+      font-size: $font-size-md;
+    }
+
+    p, ul, ol{ font-size: $p-md }
+    h1{ font-size: $h1-md }
+    h2{ font-size: $h2-md }
+
+    .flex-row-md.row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .flex-row-md.row > [class*='col-'] {
+      display: flex;
+      flex-direction: column;
+    }
+    .flex-row-md.row:after,
+    .flex-row-md.row:before {
+      display: flex;
+    }
+  }
+
+  /* Large devices (large desktops, 1200px and up) */
+  @media (min-width: $screen-lg-min) {
+    .tunecore-block{
+      &.left, &.right{ @include background-positions(); }
+    }
+
+    body{
+      font-size: $font-size-lg;
+    }
+
+    p, ul, ol{ font-size: $p-lg }
+    h1{ font-size: $h1-lg }
+    h2{ font-size: $h2-lg }
+  }
+
+  /* Equal column height in bootstrap */
+
+  .flex-row.row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .flex-row.row > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+  }
+  .flex-row.row:after,
+  .flex-row.row:before {
+    display: flex;
+  }
+
+  .tunecore-chevron-left{
+    position: absolute;
+    border-left: 1px solid #fff;
+    border-top: 1px solid #fff;
+    height: 20px;
+    width: 20px;
+    top: 50%;
+    transform: translateY(-28px) rotate(-45deg);
+  }
+
+  .tunecore-chevron-right{
+    position: absolute;
+    border-right: 1px solid #fff;
+    border-top: 1px solid #fff;
+    height: 20px;
+    width: 20px;
+    top: 50%;
+    transform: translateY(-28px) rotate(45deg);
+  }
+
+  .video-block-iframe{
+    margin-bottom: 0;
+    position: absolute; top: 0; left: 0;width: 100%; height: 100%;
+    padding-left: 2rem;
+  }
+
+  @media (max-width: 768px){
+    header img {
+      height: 20px !important;
+      width: auto !important;
+      margin: 20px 0 !important;
+    }
+    .tunecore-blog h1, .tunecore-single h1 {
+      font-size: 5rem !important;
+    }
+
+    .video-block-iframe{
+      padding-left: 0;
+      margin-bottom: 1.2rem;
+      position: absolute; top: 0; left: 0;width: 100%; height: 100%;
+    }
+  }
+
+  @media (max-width: 500px){
+    .tunecore-blog h1, .tunecore-single h1 {
+      font-size: 3.5rem !important;
+    }
+  }
+
+  @media (max-width: 320px){
+    header img {
+      height: 16px !important;
+      width: auto !important;
+      margin: 22px 0 !important;
+    }
+    .tunecore-blog h1, .tunecore-single h1 {
+      font-size: 3rem !important;
+    }
+
+    .video-block-iframe{
+      padding-left: 0;
+      margin-bottom: 1.2rem;
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    }
+  }
+
+  .tunecore-artist-services .tunecore-service span img{
+    max-width: 250px;
+  }
+
+  /* Language flasher */
+@keyframes pulse {
+  0% {
+    opacity: 0;
+    //box-shadow: 0 0 0 0 var(--tunecore-blue);
+  }
+  50% {
+    opacity: 1;
+    //box-shadow: 0 0 5px 4px var(--tunecore-blue);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.language-menu-item.flash a::before {
+  content: "";
+  position: absolute;
+  width: calc( 100% + 14px);
+  height: 100%;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  //box-shadow: 0 0 5px 4px var(--tunecore-blue);
+  border: 3px solid var(--tunecore-blue);
+  transform: scale(1.1);
+  animation-name: pulse;
+  animation-duration: 4s;
+  animation-iteration-count: 1;
+}

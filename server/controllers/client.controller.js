@@ -12,14 +12,14 @@ const newClient = {
     const { email, password, businessName, businessAddress, phone } = req.body;
     console.log(req.body)
       const hashedPassword = bcrypt.hashSync(password, 10);
-      const client = await new Client({
+      const client = new Client({
         password: hashedPassword,
         email,
         businessName: businessName,
         businessAddress: businessAddress,
         phone: phone,
       });
-      client.save().then((clientInfo) => {
+      await client.save().then((clientInfo) => {
         jwt.sign(
           { id: clientInfo._id, email: clientInfo.email },
           process.env.JWTPRIVATEKEY,
@@ -43,20 +43,24 @@ const newClient = {
     try{
       await Client.findOne({email})
         .then(clientInfo => {
-          if (!clientInfo) {
+          if (!clientInfo) {   
+            console.log('user not found')
             return res.sendStatus(401);
           }
-          const passOk = bcrypt.compareSync(password, clientInfo.password);
-          if (passOk) {
+          // changed compareSync to compare because i encounterd a strange bug
+          const passOk = bcrypt.compare(password, clientInfo.password)
+          console.log(passOk)
+          if (!passOk) {
+            console.log('wrong email/password')
+            res.sendStatus(401);
+          } else {
+            console.log('login success')
             console.log(clientInfo)
             const token = jwt.sign({id:clientInfo._id, email}, process.env.JWTPRIVATEKEY)
             res.set("x-access-token", token)
-            res.json({auth :true, token:token, data:clientInfo })
-          } else {
-            res.sendStatus(401);
+            res.json({auth :true, role:clientInfo.role, token:token, data:clientInfo })
           }
         })
-
     }catch (err){
       res.send(err.message)
     }

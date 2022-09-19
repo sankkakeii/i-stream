@@ -22,7 +22,6 @@ const SignUp = () => {
     businessName: "",
     businessAddress: "",
     phone: ""
-
 	});
 	const [setError] = useState("");
 	const navigate = useNavigate();

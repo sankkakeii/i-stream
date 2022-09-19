@@ -10,17 +10,23 @@ export const FormSection = styled.div`
 `;
 
 export const FormTitle = styled.h1`
-	margin-bottom: 24px;
-	font-size: 48px;
+	margin-bottom: 20px;
+	font-size: 40px;
 	line-height: 1.1;
 	font-weight: 600;
+`;
+
+export const FormText = styled.p`
+	margin-bottom: 20px;
+	font-size: 15px;
+	line-height: 1.1;
+	font-weight: 400;
 `;
 
 export const FormContainer = styled.div`
 	display: flex;
 `;
 export const FormColumn = styled.div`
-	/* margin-bottom: 15px; */
 	padding: 50px;
 	background: white;
 	border: 20px;
@@ -28,7 +34,7 @@ export const FormColumn = styled.div`
 	flex: 1;
 	max-width: 60%;
 	display: flex;
-	justify-content: center;
+	// justify-content: center;
 	align-items: center;
 	border-radius: 20px;
 	flex-direction: column;
@@ -53,7 +59,6 @@ export const FormRow = styled.div`
 `;
 
 export const FormWrapper = styled.form`
-	/* max-width: 540px; */
 	padding-top: 0;
 	width: 100%;
 `;
@@ -132,3 +137,32 @@ export const FormButton = styled.button`
 		background-color: #E34A51;
 	}
 `;
+
+export const ContractInfo = styled("div")` 
+  height:250px; 
+  padding: 0;
+  margin: 0;
+  padding-left: 1em;
+  background: #ffffff;
+  border: 2px solid #e5e5e5;
+  box-sizing: border-box;
+  color: #000;
+  font-size: 1.3rem;
+  font-weight: 200;
+  &:first-child {
+    padding-top: 0.8em;
+  }
+  
+  overflow: hidden;
+  overflow-y: scroll;
+  position: relative;
+
+//   &::-webkit-scrollbar {
+// 	  width: 10px;
+// 	  background: #E34A51;
+// 	//   border: 1px solid black;
+//   }
+`
+export const SignatureComponentMod = styled("SignatureComponent")` 
+//   display: none; 
+`
