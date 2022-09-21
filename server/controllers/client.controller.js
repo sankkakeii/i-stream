@@ -55,10 +55,13 @@ const newClient = {
             res.sendStatus(401);
           } else {
             console.log('login success')
-            console.log(clientInfo)
-            const token = jwt.sign({id:clientInfo._id, email}, process.env.JWTPRIVATEKEY)
-            res.set("x-access-token", token)
-            res.json({auth :true, role:clientInfo.role, token:token, data:clientInfo })
+            console.log(clientInfo.email)
+            const token = jwt.sign({id:clientInfo._id, email, role: clientInfo.role}, process.env.JWTPRIVATEKEY)
+            res.set({
+              // "x-access-token": token,
+              "authorization": token
+          })
+            res.json({auth :true, role:clientInfo.role, data:clientInfo })
           }
         })
     }catch (err){
@@ -69,12 +72,7 @@ const newClient = {
   dashboard: async (req, res) =>{
     res.json('dashboard')
 
-  }, 
-
-  uploadVideo: async (req, res) =>{  
-    console.log('uploadVideo')
-  }
-  
+  },   
 }
 
 module.exports = newClient;

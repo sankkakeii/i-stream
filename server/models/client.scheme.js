@@ -34,6 +34,11 @@ const clientSchema = new mongoose.Schema({
         type: String,
         default: 'creator'
 
+    },
+    active: {
+        type: Boolean,
+        default: false
+
     }
 }, { timestamps:true})
 

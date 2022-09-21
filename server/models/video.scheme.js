@@ -29,6 +29,9 @@ const videoContentSchema = new mongoose.Schema({
         required: [true, "laguage is required"],
         trim:true,
     },
+    status: {
+        type: mongoose.SchemaTypes.Mixed
+    },
 }, { timestamps:true})
 
 

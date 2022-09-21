@@ -10,7 +10,8 @@ const cors = require('cors');
 const corsOptions ={
     origin:'http://localhost:3000',
     credentials:true,
-    optionSuccessStatus:200
+    optionSuccessStatus:200,
+    exposedHeaders: 'Authorization',
 }
 
 // installing packages
@@ -28,6 +29,7 @@ app.use(bodyParser.json());
 app.use('/api', require('./routes/home.route.js'));
 app.use('/api/client', require('./routes/client.route.js'));
 app.use('/api/video', require('./routes/video.route.js'));
+app.use('/api/admin', require('./routes/admin.route.js'));
 
 
 // Start server

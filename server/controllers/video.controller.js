@@ -8,33 +8,44 @@ const newVideoController = {
 
   // add video
   addVideo: async (req, res) =>{
-    const { contentTitle, genre, language, releaseDate, type} = req.body;
-    const payload = jwt.verify(req.header('authorization'), process.env.JWTPRIVATEKEY)
+    try{
+      const { contentTitle, genre, language, releaseDate, type} = req.body;
+      const payload = jwt.verify(req.headers['authorization'], process.env.JWTPRIVATEKEY)
+      console.log(payload)
+      
       const newVideoContent = new videoContent({
-        contentTitle: contentTitle,
-        genre: genre,
-        type: type,
-        releaseDate: releaseDate,
-        language: language,
-        creatorID: payload.id,
-      });
-  
+          contentTitle: contentTitle,
+          genre: genre,
+          type: type,
+          releaseDate: releaseDate,
+          language: language,
+          creatorID: payload.id,
+        })
+
+       
       newVideoContent.save().then((videoContentInfo) => {
         // newVideoController.uploadVideo()
         res.json(newVideoContent)
         console.log('upload video with the statement above')
       });
+
+    }catch(e) {
+      console.log(e)
+      res.send("could not add video")
+    }
+
   }, 
   
   getVideos: async (req, res) =>{
     try{
-      const payload = jwt.verify(req.header('authorization'), process.env.JWTPRIVATEKEY)
+      const payload = jwt.verify(req.headers['authorization'], process.env.JWTPRIVATEKEY)
       let creatorID = payload.id
       let videos = await videoContent.find({creatorID})
       // console.log(videos)
       res.json({'videos': videos, 'token': req.body.token})
-    }catch(err){
-      res.send(err)
+    }catch(e){
+      console.log(e)
+      res.send("could not get videos")
     }
   },
 
